@@ -42,7 +42,7 @@ print(horizontalGradient(Color(24, 153, 231), Color(171, 24, 231), text))
 ![App Screenshot](https://cdn.discordapp.com/attachments/1128119568389382156/1129877495110443068/image.png)
 ## TODO
 
-- Add vertical and if i have the required iq diagonal.
+- Add horizontal and if i have the required iq diagonal.
 - Support more than 2 colors.
 
 ## Authors
