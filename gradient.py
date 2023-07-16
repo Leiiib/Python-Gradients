@@ -1,5 +1,4 @@
 from enum import Enum
-from pystyle import Center
 import time
 
 
@@ -59,8 +58,7 @@ def gradient(color1: Color, color2: Color, text: str, type:Type = Type.HORIZONTA
         g = g - gStep if color1.getGreen() > color2.getGreen() else g + gStep
         b = b - bStep if color1.getBlue()>color2.getBlue() else b + bStep
 
-        output += (f"\033[38;2;{r};{g};{b};220m{line}\033[0m\n")    
-        
+        output += (f"\033[38;2;{r};{g};{b};220m{line}\033[0m\n")   
     return output
 
 """
@@ -75,10 +73,9 @@ class Animation:
     step: float = 0.0
     amount = 0
     rOff = gOff = bOff = startR = startG = startB = rStep = gStep = bStep = 0
-    center = False
     running = False
 
-    def __init__(self, color1: Color, color2: Color, text: str, duration: int = 5, step: float = 0.5, center = False) -> None:
+    def __init__(self, color1: Color, color2: Color, text: str, duration: int = 5, step: float = 0.5) -> None:
         self.color1 = color1
         self.color2 = color2
         self.text = text
@@ -101,8 +98,7 @@ class Animation:
         self.bOff = abs(color1.getBlue() - color2.getBlue())
         self.startB = color1.getBlue()
         self.bStep = int(abs(self.bOff / self.amount))
-        
-        self.center = center
+    
 
     def tick(self):
         time.sleep(self.step)
@@ -123,7 +119,6 @@ def animated_gradient(animation: Animation):
     r = animation.r
     g = animation.g
     b = animation.b    
-    center = animation.center
     
     if(color1.getRed()>color2.getRed()):
         r -= rStep  
@@ -169,11 +164,14 @@ def animated_gradient(animation: Animation):
             c1b = color1.getBlue()
             color1.b = color2.getBlue()
             color2.b = c1b
-    output += (f"\033[38;2;{r};{g};{b};220m{text}\033[0m\n")
-    print(Center.XCenter(output)) if center else print(output)
-
+            
     animation.r = r
     animation.g = g
     animation.b = b
+
+    output = (f"\033[38;2;{r};{g};{b};220m{text}\033[0m\n")
+    return output
+    
+
 
 
