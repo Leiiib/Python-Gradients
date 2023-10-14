@@ -67,10 +67,7 @@ while True:
 
 ## TODO
 
-- Add vertical and if i have the required iq diagonal.
+- Add vertical and if i have the required IQ diagonal.
 - Support more than 2 colors.
 
-## Authors
-
-- [@NebulusDev](https://www.github.com/Leiiib)
 
